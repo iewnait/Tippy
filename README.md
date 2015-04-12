@@ -1,21 +1,23 @@
 Tippy
 ==================
 
-Tip Calculator app for CodePath Application
+Tip Calculator app for CodePath application.
 
 Time spent: 16 hours total
 
-Completed Task:
+Completed Tasks:
 
 * [x] Required: Basic tip calculator functionality
 * [x] Required: Settings page
-* [x] Optional: View animation
-* [x] Optional: Remember the bill amount across app
-* restarts (within 5 mins)
-* [x] Optional: Use locale specific currency and currency thousands separators
-* [x] Additional: Keyboard launch immediately so user can start entering tip amount immediately.
-* [x] Additional: Allow splitting bills for up to 6 persons.
+* [x] Optional: View animations
+* [x] Optional: Remember the bill amount across app restarts (within 5 mins)
+* [x] Optional: Use locale specific currency and currency thousands separator
+* [x] Additional: Advance gestures(pan, tap, double tap) support.
+* [x] Additional: Keyboard display on app launch so user can start entering bill amount immediately.
+* [x] Additional: Allow splitting bills for up to 6 people.
 
+Testing:
+Done only on iOS 8 simulator for iPhone 5.
 
 **Demo**
 

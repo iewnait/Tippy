@@ -75,7 +75,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Setup initial values
+        // Setup initial values.
         let shiftValue = billFieldInitialFrameOriginY - billFieldEditingFrameOriginY
         tipLabelInitialFrameOriginY = self.tipLabel.frame.origin.y + shiftValue
         tipLabelEditingFrameOriginY = self.tipLabel.frame.origin.y
@@ -95,7 +95,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         scrollProgressBarInitialFrameOriginY = self.scrollProgressBar.frame.origin.y + shiftValue
         scrollProgressBarEditingFrameOriginY = self.scrollProgressBar.frame.origin.y
 
-        // Split Icons
+        // Split Icons.
         splitIconLabel1.text = getPersonIconString(self.splitAmountUserCount1)
         splitIconLabel1.userInteractionEnabled = true
         splitIconLabel2.text = getPersonIconString(self.splitAmountUserCount2)
@@ -103,14 +103,14 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         splitIconLabel3.text = getPersonIconString(self.splitAmountUserCount3)
         splitIconLabel3.userInteractionEnabled = true        
         
-        // Add dismiss keyboard gestures
+        // Add dismiss keyboard gestures.
         let dismissTapRecognizer = UITapGestureRecognizer(target: self, action: Selector("handleTapToDismissKeyboard:"))
         dismissTapRecognizer.numberOfTapsRequired = 1
         dismissTapRecognizer.delegate = self
         self.dismissKeyboardView.addGestureRecognizer(dismissTapRecognizer)
         self.dismissKeyboardView.userInteractionEnabled = true
         
-        // Add tap user count gestures
+        // Add tap user count gestures.
         let singleTapRecognizer1 = UITapGestureRecognizer(target: self, action: Selector("handleSingleTapGesture:"))
         singleTapRecognizer1.numberOfTapsRequired = 1
         singleTapRecognizer1.delegate = self
@@ -143,19 +143,16 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         doubleTapRecognizer3.delegate = self
         self.splitIconLabel3.addGestureRecognizer(doubleTapRecognizer3)
         singleTapRecognizer3.requireGestureRecognizerToFail(doubleTapRecognizer3)
-        
-        // Do any additional setup after loading the view, typically from a nib.
 
+        // Setting billField placeholder.
         billField.placeholder = self.priceFormatter.currencySymbol
 
-
-        // Subview
+        // Adding color panel subview
         var topRect = UIScreen.mainScreen().bounds
-        
         self.colorPanel = UIView(frame: topRect)
         self.colorPanel.userInteractionEnabled = false
         
-        // Get previous value
+        // Get previous bill amount.
         var lastBillValue = self.storageHelper.getUserSetting(Constants.lastBillKey, defaultValue:"NA") as NSString
         if lastBillValue != "NA" {
             var lastTimeStamp = self.storageHelper.getUserSetting(Constants.lastBillTimeKey, defaultValue:"NA")
@@ -195,11 +192,11 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             })
         }
         else {
-            // Cap value at 9999
+            // Cap bill at 9999.
             if billFieldAsString.doubleValue > 9999 {
                 billFieldAsString = "9999"
             }
-            // Remove $ sign and animate upwards
+            // Remove $ sign and animate upwards.
             billField.text = billFieldAsString
             if billFieldAsString.length == 1 {
                 UIView.animateWithDuration(0.4, animations: {
@@ -208,7 +205,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             }
         }
 
-        // Saving Value
+        // Saving bill amount for app restart.
         self.storageHelper.saveUserSetting(Constants.lastBillKey, value: billFieldAsString)
         let date = NSDate()
         let timestamp = date.timeIntervalSince1970
