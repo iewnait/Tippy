@@ -7,12 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		82A7B34E1ADA806200136EB6 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A7B34D1ADA806200136EB6 /* UserViewController.swift */; };
+		82A7B3501ADA843D00136EB6 /* SimpleStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A7B34F1ADA843D00136EB6 /* SimpleStorage.swift */; };
+		82A7B3521ADA865E00136EB6 /* constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A7B3511ADA865E00136EB6 /* constants.swift */; };
 		82A8BB7B1AD45A5800D61D4D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A8BB7A1AD45A5800D61D4D /* AppDelegate.swift */; };
 		82A8BB7D1AD45A5800D61D4D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A8BB7C1AD45A5800D61D4D /* ViewController.swift */; };
 		82A8BB801AD45A5800D61D4D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82A8BB7E1AD45A5800D61D4D /* Main.storyboard */; };
 		82A8BB821AD45A5800D61D4D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82A8BB811AD45A5800D61D4D /* Images.xcassets */; };
 		82A8BB851AD45A5800D61D4D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82A8BB831AD45A5800D61D4D /* LaunchScreen.xib */; };
 		82A8BB911AD45A5900D61D4D /* tippyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A8BB901AD45A5900D61D4D /* tippyTests.swift */; };
+		82D6E1591AD8D112000E3771 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 82D6E1581AD8D0CB000E3771 /* fontawesome-webfont.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +30,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		82A7B34D1ADA806200136EB6 /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		82A7B34F1ADA843D00136EB6 /* SimpleStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleStorage.swift; sourceTree = "<group>"; };
+		82A7B3511ADA865E00136EB6 /* constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = constants.swift; sourceTree = "<group>"; };
 		82A8BB751AD45A5800D61D4D /* tippy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tippy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82A8BB791AD45A5800D61D4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		82A8BB7A1AD45A5800D61D4D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -36,6 +43,7 @@
 		82A8BB8A1AD45A5900D61D4D /* tippyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = tippyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		82A8BB8F1AD45A5900D61D4D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		82A8BB901AD45A5900D61D4D /* tippyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tippyTests.swift; sourceTree = "<group>"; };
+		82D6E1581AD8D0CB000E3771 /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "fontawesome-webfont.ttf"; path = "../../../Downloads/fontawesome-webfont.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +64,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		823337991AD5DDF6004CBE9A /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				82A7B34D1ADA806200136EB6 /* UserViewController.swift */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
 		82A8BB6C1AD45A5800D61D4D = {
 			isa = PBXGroup;
 			children = (
@@ -77,12 +93,15 @@
 		82A8BB771AD45A5800D61D4D /* tippy */ = {
 			isa = PBXGroup;
 			children = (
+				823337991AD5DDF6004CBE9A /* View Controllers */,
 				82A8BB7A1AD45A5800D61D4D /* AppDelegate.swift */,
 				82A8BB7C1AD45A5800D61D4D /* ViewController.swift */,
 				82A8BB7E1AD45A5800D61D4D /* Main.storyboard */,
 				82A8BB811AD45A5800D61D4D /* Images.xcassets */,
 				82A8BB831AD45A5800D61D4D /* LaunchScreen.xib */,
 				82A8BB781AD45A5800D61D4D /* Supporting Files */,
+				82A7B34F1ADA843D00136EB6 /* SimpleStorage.swift */,
+				82A7B3511ADA865E00136EB6 /* constants.swift */,
 			);
 			path = tippy;
 			sourceTree = "<group>";
@@ -90,6 +109,7 @@
 		82A8BB781AD45A5800D61D4D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				82D6E1581AD8D0CB000E3771 /* fontawesome-webfont.ttf */,
 				82A8BB791AD45A5800D61D4D /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -193,6 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				82A8BB801AD45A5800D61D4D /* Main.storyboard in Resources */,
+				82D6E1591AD8D112000E3771 /* fontawesome-webfont.ttf in Resources */,
 				82A8BB851AD45A5800D61D4D /* LaunchScreen.xib in Resources */,
 				82A8BB821AD45A5800D61D4D /* Images.xcassets in Resources */,
 			);
@@ -213,6 +234,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				82A8BB7D1AD45A5800D61D4D /* ViewController.swift in Sources */,
+				82A7B3501ADA843D00136EB6 /* SimpleStorage.swift in Sources */,
+				82A7B34E1ADA806200136EB6 /* UserViewController.swift in Sources */,
+				82A7B3521ADA865E00136EB6 /* constants.swift in Sources */,
 				82A8BB7B1AD45A5800D61D4D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -405,6 +429,7 @@
 				82A8BB961AD45A5900D61D4D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		82A8BB971AD45A5900D61D4D /* Build configuration list for PBXNativeTarget "tippyTests" */ = {
 			isa = XCConfigurationList;
@@ -413,6 +438,7 @@
 				82A8BB991AD45A5900D61D4D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
