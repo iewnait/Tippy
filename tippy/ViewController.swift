@@ -68,7 +68,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     var splitAmountUserCount3:Int = 5
     var tipPercentLastChange = 0.0
     var splitUserCountLastChange = 0.0
-    
+
+    var priceFormatter = NSNumberFormatter()
     let storageHelper: SimpleStorage = SimpleStorage()
 
     override func viewDidLoad() {
@@ -144,8 +145,9 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         singleTapRecognizer3.requireGestureRecognizerToFail(doubleTapRecognizer3)
         
         // Do any additional setup after loading the view, typically from a nib.
-        
-        billField.placeholder = "$"
+
+        billField.placeholder = self.priceFormatter.currencySymbol
+
 
         // Subview
         var topRect = UIScreen.mainScreen().bounds
@@ -354,14 +356,17 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         if self.tipPercentValue == 0.0 {
             self.tipPercentValue = Double(storageHelper.getUserSetting(Constants.TipDefaultKey, defaultValue: "15").toInt()!) / 100.0
         }
+
+        self.priceFormatter.numberStyle = .CurrencyStyle
+
         tipLabel.text = String(format: "%.2f", self.tipPercentValue * 100.0) + "%"
         self.totalAmountValue = self.tipPercentValue * billAmount + billAmount
-        totalLabel.text = String(format: "$%.2f", self.totalAmountValue)
-        tipAmountLabel.text = String(format: "$%.2f", self.tipPercentValue * billAmount)
-        
-        splitAmountLabel1.text = String(format: "$%.2f", self.getPersonSplitValue(self.splitAmountUserCount1))
-        splitAmountLabel2.text = String(format: "$%.2f", self.getPersonSplitValue(self.splitAmountUserCount2))
-        splitAmountLabel3.text = String(format: "$%.2f", self.getPersonSplitValue(self.splitAmountUserCount3))
+        totalLabel.text = self.priceFormatter.stringFromNumber(self.totalAmountValue)
+        tipAmountLabel.text = self.priceFormatter.stringFromNumber(self.tipPercentValue * billAmount)
+
+        splitAmountLabel1.text = self.priceFormatter.stringFromNumber(self.getPersonSplitValue(self.splitAmountUserCount1))
+        splitAmountLabel2.text = self.priceFormatter.stringFromNumber(self.getPersonSplitValue(self.splitAmountUserCount2))
+        splitAmountLabel3.text = self.priceFormatter.stringFromNumber(self.getPersonSplitValue(self.splitAmountUserCount3))
     }
 
     func drawInitialStage() {
