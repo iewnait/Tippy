@@ -153,24 +153,30 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         self.colorPanel = UIView(frame: topRect)
         self.colorPanel.userInteractionEnabled = false
         
-        // DrawInitialStage
-        drawInitialStage()
-        
-        //DEBUGGING
-        //Window size
-        println("Window Origin X: \(UIApplication.sharedApplication().keyWindow?.frame.origin.x)")
-        println("Window Origin Y: \(UIApplication.sharedApplication().keyWindow?.frame.origin.y)")
-        println("Window Height: \(UIApplication.sharedApplication().keyWindow?.frame.height)")
-        println("Window Width: \(UIApplication.sharedApplication().keyWindow?.frame.width)")
+        // Get previous value
+        var lastBillValue = self.storageHelper.getUserSetting(Constants.lastBillKey, defaultValue:"NA") as NSString
+        if lastBillValue != "NA" {
+            var lastTimeStamp = self.storageHelper.getUserSetting(Constants.lastBillTimeKey, defaultValue:"NA")
+            let date = NSDate()
+            let timestamp = String(format: "%f", date.timeIntervalSince1970)
+            var timedelta = (timestamp as NSString).doubleValue - (lastTimeStamp as NSString).doubleValue
+            // Retain value if < 5 mins
+            if (timedelta <= 60 * 5 && lastBillValue != "" ) {
+                self.billField.text = lastBillValue
+                self.drawEditingStage()
+                self.updateCalculation()
+                self.updatePanelColor()
+            }
+            else {
+                // DrawInitialStage
+                drawInitialStage()
+            }
+        }
+        else {
+            // DrawInitialStage
+            drawInitialStage()
+        }
 
-        // BillField
-        println("billField Origin X: \(billField.frame.origin.x)")
-        println("billField Origin Y: \(billField.frame.origin.y)")
-        println("billField Height: \(billField.frame.height)")
-        println("billField Width: \(billField.frame.width)")
-        
-        // Origin
-        println("origin y: \(self.billField.frame.origin.y)")
     }
     
     override func didReceiveMemoryWarning() {
@@ -199,8 +205,15 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                 })
             }
         }
-        
+
+        // Saving Value
+        self.storageHelper.saveUserSetting(Constants.lastBillKey, value: billFieldAsString)
+        let date = NSDate()
+        let timestamp = date.timeIntervalSince1970
+        self.storageHelper.saveUserSetting(Constants.lastBillTimeKey, value: String(format: "%f", timestamp))
+
         self.updateCalculation()
+        self.updatePanelColor()
     }
 
     func handleTapToDismissKeyboard(sender: AnyObject) {
@@ -305,7 +318,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         UIApplication.sharedApplication().keyWindow?.addSubview(self.colorPanel)
         UIApplication.sharedApplication().keyWindow?.bringSubviewToFront(self.colorPanel)
 
-        println("view will appear")
+//        println("view will appear")
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -318,20 +331,21 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         self.updateCalculation()
         self.updatePanelColor()
 
-        println("view did appear")
         // Automatically launch keyboard
         billField.becomeFirstResponder()
+
+//        println("view did appear")
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         self.colorPanel.removeFromSuperview()        
-        println("view will disappear")
+//        println("view will disappear")
     }
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
-        println("view did disappear")
+//        println("view did disappear")
     }
 
     func updateCalculation() {
@@ -532,7 +546,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             }
         }
 
-        
         return iconString
     }
     

@@ -26,19 +26,24 @@ class UserViewController: UIViewController {
     }
 
     @IBAction func didChangeSettings(sender: UITextField) {
+        var value = sender.text as String
         if sender == self.minimumTextField {
-            println("Saving minimumTextField")
-            self.storageHelper.saveUserSetting(Constants.TipMinimumKey,value: sender.text as String)
+//            println("Saving minimumTextField")
+            if Double(value.toInt()!) < 5 {
+                // minimal tip allowed
+                value = "5"
+            }
+            self.storageHelper.saveUserSetting(Constants.TipMinimumKey,value: value)
         }
         else if sender == self.defaultTextField {
-            println("Saving defaultTextField")
-            self.storageHelper.saveUserSetting(Constants.TipDefaultKey,value: sender.text as String)
+//            println("Saving defaultTextField")
+            self.storageHelper.saveUserSetting(Constants.TipDefaultKey,value: value)
         }
         else if sender == self.maximumTextField {
-            println("Saving maximumTextField")            
-            self.storageHelper.saveUserSetting(Constants.TipMaximumKey,value: sender.text as String)
+//            println("Saving maximumTextField")
+            self.storageHelper.saveUserSetting(Constants.TipMaximumKey,value: value)
         }
-        
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -46,14 +51,4 @@ class UserViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

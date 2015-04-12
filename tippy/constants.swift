@@ -15,4 +15,6 @@ struct Constants {
     static let TipDefaultMinimumValue = "5"
     static let TipDefaultMaximumValue = "30"
     static let TipDefaultValue = "15"
+    static let lastBillKey = "LastBillKey"
+    static let lastBillTimeKey = "LastBillTimeKey"
 }
